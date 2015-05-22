@@ -17,7 +17,7 @@ class SelfUpdateCommand extends Command
         $this
             ->setName('self-update')
             ->setAliases(array('selfupdate'))
-            ->setDescription('Updates to the latest version of Conductor');
+            ->setDescription('Updates conductor.phar to the latest version.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -26,9 +26,9 @@ class SelfUpdateCommand extends Command
         $version = $this->getApplication()->getVersion();
 
         if ($manager->update($this->getApplication()->getVersion(), true)) {
-            $output->writeln('Successfully updated Conductor');
+            $output->writeln('<info>Successfully updated conductor.phar</info>');
         } else {
-            $output->writeln("Currently running the latest version: $version");
+            $output->writeln("<info>Currently running the latest version: $version</info>");
         }
     }
 }
