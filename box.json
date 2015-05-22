@@ -10,7 +10,9 @@
               "tests",
               "phpunit",
               "sebastian",
-              "phpspec"
+              "phpspec",
+              "doctrine",
+              "phpdocumentor"
             ],
             "in": "vendor"
         }
