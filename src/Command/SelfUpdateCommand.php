@@ -23,6 +23,12 @@ class SelfUpdateCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $manager = new Manager(Manifest::loadFile(self::MANIFEST_FILE));
-        $manager->update($this->getApplication()->getVersion(), true);
+        $version = $this->getApplication()->getVersion();
+
+        if ($manager->update($this->getApplication()->getVersion(), true)) {
+            $output->writeln('Successfully updated Conductor');
+        } else {
+            $output->writeln("Currently running the latest version: $version");
+        }
     }
 }
