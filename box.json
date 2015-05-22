@@ -19,6 +19,6 @@
     ],
     "git-version": "package_version",
     "main": "./conductor",
-    "output": "./conductor-@git-version@.phar",
+    "output": "./dist/conductor-@git-version@.phar",
     "stub": true
 }

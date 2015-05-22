@@ -1,6 +1,7 @@
 #!/usr/bin/env php
 <?php
 
+$distDir = __DIR__ . '/dist';
 $releaseDir = __DIR__ . '/../conductor-release';
 $releaseUrl = 'http://eddmann.github.io/conductor/release/';
 $releaseBranch = 'gh-pages';
@@ -36,7 +37,7 @@ $releaseDir = realpath($releaseDir);
 echo "\n";
 
 echo "Copy\n";
-execute("cp $newRelease $releaseDir/release/$newRelease");
+execute("cp $distDir/$newRelease $releaseDir/release/$newRelease");
 
 echo "Manifest\n";
 $manifests = is_file("$releaseDir/manifest.json")
@@ -44,7 +45,7 @@ $manifests = is_file("$releaseDir/manifest.json")
     : array();
 $manifests[] = array(
     'name' => $newRelease,
-    'sha1' => sha1_file($newRelease),
+    'sha1' => sha1_file("$distDir/$newRelease"),
     'url' => "$releaseUrl/$newRelease",
     'version' => $newVersion
 );
